@@ -6,7 +6,7 @@
 < envPaths
 epicsEnvSet("STREAM_PROTOCOL_PATH", ".:../../db")
 epicsEnvSet "K_1" "$(K_1=melba:wedlposu02:)"
-
+UHR=6
 
 cd "${TOP}"
 dbLoadRecords("db/asynRecord.db","P=norum:,R=asyn,PORT=L0,ADDR=24,IMAX=100,OMAX=100")
@@ -19,8 +19,8 @@ wasseruhr_registerRecordDeviceDriver pdbbase
 
 drvAsynIPPortConfigure("UHR_PORT","10.32.240.76:4006",0,0,0) 
 
-asynSetTraceIOMask("K_1_PORT",-1,0x2)
-asynSetTraceMask("K_1_PORT",-1,0x9)
+#asynSetTraceIOMask("K_1_PORT",-1,0x2)
+#asynSetTraceMask("K_1_PORT",-1,0x9)
 
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=baiHost")
@@ -30,7 +30,7 @@ dbLoadRecords("db/wasseruhr.db","WASSER=$(K_1), PORT=UHR_PORT")
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
 
-< AutoSaveTask.cmd
+#< AutoSaveTask.cmd
 
 ## Start any sequence programs
 #seq sncxxx,"user=baiHost"
