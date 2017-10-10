@@ -1,0 +1,141 @@
+ReplyTimeout = 10000;
+
+Terminator = CR LF;
+# configure water mess 1
+
+
+set:uhr:CL {
+  out "CL";
+}
+
+get:uhr:Nr {
+  out "ST 1";
+  in "ST %u %*u %*u %*u %*u %*u %*u";
+}
+
+
+get:uhr:flow {
+  out "ST 1";
+  in "ST %*u %u %*u %*u %*u %*u %*u";
+}
+
+get:uhr:minsoll {
+  out "ST 1";
+  in "ST %*u %*u %u %*u %*u %*u %*u";
+}
+
+get:uhr:maxsoll {
+  out "ST 1";
+  in "ST %*u %*u %*u %u %*f %*s %*u %*u";
+}
+
+get:uhr:Qn {
+  out "ST 1";
+  in "ST %*u %*u %*u %*u %u %*u %*u";
+}
+
+get:uhr:kubic {
+  out "ST 1";
+  in "ST %*u %*u %*u %*u %*u %u %*u";
+}
+
+get:uhr:litter {
+  out "ST 1";
+  in "ST %*u %*u %*u %*u %*u %*u %u";
+}
+# alarm 
+get:uhr1:alarm {
+  out "CL";
+  in "%s %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr2:alarm {
+  out "CL";
+  in "%s %*u %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+get:uhr3:alarm {
+  out "CL";
+  in "AL %*u %*u %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr4:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr5:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr6:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr7:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %u %*u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr8:alarm {
+  out "CL";
+  in "CL<0d>AL %*u %*u %*u %*u %*u %*u %*u %u %*u %*u %*u %*u %*u %*u %*u";
+}
+
+get:uhr9:alarm {
+  out "CL";
+  in "AL %*u  %*u  %*u  %*u  %*u  %*u  %*u  %*u  %*u  %u  %*u  %*u  %*u";
+}
+
+get:uhr10:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %*u %*u %*u %u %*u %*u %*u %*u %*u";
+}
+
+get:uhr11:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %u %*u %*u %*u %*u";
+}
+
+get:uhr12:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %u %*u %*u %*u";
+}
+
+get:uhr13:alarm {
+  out "CL";
+  in "AL %u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %u %*u %*u";
+}
+
+get:uhr14:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %u %*u";
+}
+
+get:uhr15:alarm {
+  out "CL";
+  in "AL %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %u";
+}
+
+set:uhr:Minsoll {
+  out "SE 6 %u";
+}
+
+set:uhr:Maxsoll {
+  out "SE 6 * %u";
+}
+
+set:uhr:Qn {
+  out "SE 6 * * %u";
+}
+
+set:uhr:Kubic {
+  out "SE 6 *** %u";
+}
+
+set:uhr:Liter {
+  out "SE 6 **** %u";
+}
+
+

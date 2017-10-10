@@ -1,0 +1,20 @@
+wasseruhr_registerRecordDeviceDriver.o: \
+ wasseruhr_registerRecordDeviceDriver.cpp \
+ /home/epics/base-3.14.12.5/include/epicsStdlib.h \
+ /home/epics/base-3.14.12.5/include/shareLib.h \
+ /home/epics/base-3.14.12.5/include/os/Linux/osdStrtod.h \
+ /home/epics/base-3.14.12.5/include/iocsh.h \
+ /home/epics/base-3.14.12.5/include/shareLib.h \
+ /home/epics/base-3.14.12.5/include/iocshRegisterCommon.h \
+ /home/epics/base-3.14.12.5/include/registryCommon.h \
+ /home/epics/base-3.14.12.5/include/dbStaticLib.h \
+ /home/epics/base-3.14.12.5/include/dbFldTypes.h \
+ /home/epics/base-3.14.12.5/include/dbBase.h \
+ /home/epics/base-3.14.12.5/include/epicsTypes.h \
+ /home/epics/base-3.14.12.5/include/ellLib.h \
+ /home/epics/base-3.14.12.5/include/dbDefs.h \
+ /home/epics/base-3.14.12.5/include/link.h \
+ /home/epics/base-3.14.12.5/include/errMdef.h \
+ /home/epics/base-3.14.12.5/include/cantProceed.h \
+ /home/epics/base-3.14.12.5/include/registryRecordType.h \
+ /home/epics/base-3.14.12.5/include/recSup.h
