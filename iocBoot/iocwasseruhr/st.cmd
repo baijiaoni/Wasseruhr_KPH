@@ -19,8 +19,8 @@ save_restoreSet_Debug(10)
 
 drvAsynIPPortConfigure("UHR_PORT","10.32.240.76:4006",0,0,0) 
 
-#asynSetTraceIOMask("UHR_PORT",-1,0x2)
-#asynSetTraceMask("UHR_PORT",-1,0x9)
+asynSetTraceIOMask("UHR_PORT",-1,0x2)
+asynSetTraceMask("UHR_PORT",-1,0x9)
 
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=baiHost")
