@@ -1,129 +1,131 @@
 ReplyTimeout = 5000;
 
-Terminator = CR LF;
+OutTerminator =CR;
+#InTerminator =CR;
 # configure water mess 1
 
 
 set:uhr:CL {
-  out "CL";
+  out "CL \$1";
 }
 
 get:uhr:Nr {
   out "ST 1";
-  in "ST %f %*u %*u %*u %*u %*u %*u";
+  in "ST %d %*u %*u %*u %*fN %*u %*u \r";
 }
 
 
 get:uhr:flow {
-  out "ST 1";
-  in "ST %*u %f %*u %*u %*u %*u %*u";
+  out "ST \$1";
+  in "ST %*u %d %*u %*u %*fN %*u %*u \r";
 }
 
 get:uhr:minsoll {
-  out "ST 1";
-  in "ST %*u %*u %f %*u %*u %*u %*u";
+  out "ST \$1";
+  in "ST %*u %*u %d %*u %*fN %*u %*u \r";
 }
 
 get:uhr:maxsoll {
-  out "ST 1";
-  in "ST %*u %*u %*u %f %*f %*s %*u %*u";
+  out "ST \$1";
+  in "ST %*u %*u %*u %d %*fN %*u %*u \r";
 }
 
 get:uhr:Qn {
-  out "ST 1";
-  in "ST %*u %*u %*u %*u %f %*u %*u";
+  out "ST \$1";
+  in "ST %*u %*u %*u %*u %fN %*u %*u \r";
 }
 
 get:uhr:kubic {
-  out "ST 1";
-  in "ST %*u %*u %*u %*u %*u %f %*u";
+  out "ST \$1";
+  in "ST %*u %*u %*u %*u %*fN %d %*u \r";
 }
 
 get:uhr:litter {
-  out "ST 1";
-  in "ST %*u %*u %*u %*u %*u %*u %f";
+  out "ST \$1";
+  in "ST %*u %*u %*u %*u %*fN %*u %d \r";
 }
+
 # alarm 
 get:uhr1:alarm {
   out "IN";
-  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr2:alarm {
   out "IN";
-  in "IN %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 get:uhr3:alarm {
   out "IN";
-  in "IN %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr4:alarm {
   out "IN";
-  in "IN %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr5:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr6:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr7:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr8:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr9:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr10:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr11:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u \r";
 }
 
 get:uhr12:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u \r";
 }
 
 get:uhr13:alarm {
   out "IN";
-  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u";
+  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u \r";
 }
 
 get:uhr14:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u \r";
 }
 
 get:uhr15:alarm {
   out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f";
+  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f \r";
 }
 
 set:uhr:Minsoll {
-  out "SE \$1 %f";
+  out "SE \$1 %d";
 }
 
 set:uhr:Maxsoll {
-  out "SE \$1 * %f";
+  out "SE \$1 * %d";
 }
 
 set:uhr:Qn {
@@ -131,14 +133,10 @@ set:uhr:Qn {
 }
 
 set:uhr:Kubic {
-  out "SE \$1 *** %f";
+  out "SE \$1 *** %d";
 }
 
 set:uhr:Liter {
-  out "SE \$1 **** %f";
+  out "SE \$1 **** %d";
 }
 
-debug {
-    ExtraInput = Ignore;
-    out "%s"; in "%39c"
-}

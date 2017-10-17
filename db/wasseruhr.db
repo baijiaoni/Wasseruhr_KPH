@@ -8,7 +8,6 @@
 # 	param6 - Liter, 1000 liter => 1 Kubikmeter
  
 #Uhr 1
-
 record(ao, "uhr1:Minsoll:set")
 {
     field(DESC, "Set minimal water flow rate (Liter/hour)")
@@ -17,7 +16,6 @@ record(ao, "uhr1:Minsoll:set")
     field(PREC, "2")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    field(LOPR, "0")
     field(EGU, "l/h")
 
 }
@@ -30,7 +28,6 @@ record(ao, "uhr1:Maxsoll:set")
     field(PREC, "2")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    field(LOPR, "0")
     field(EGU, "l/h")
 }
 
@@ -78,7 +75,6 @@ record(ao, "uhr6:Minsoll:set")
     field(PREC, "2")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    field(LOPR, "0")
     field(EGU, "l/h")
 
 }
@@ -91,7 +87,6 @@ record(ao, "uhr6:Maxsoll:set")
     field(PREC, "2")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    field(LOPR, "0")
     field(EGU, "l/h")
 }
 
@@ -192,20 +187,20 @@ record(ao, "uhr9:Liter:set")
 }
 
 
-#########################################################################################
+#############################################
 # CL - clear interlock
 record(ao, "CL:set")
 {
-    field(DESC, "Clear the interlock queue, producing new alarm")
+    field(DESC, "Clear the interlock queue")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL $(PORT)")
+    field(OUT,  "@wasseruhr.proto set:uhr:CL(1) $(PORT)")
     field(DRVH, "1")
     field(HOPR, "1")
     field(LOPR, "1")
 }
 
 
-#########################################################################################
+#############################################
 # Statusausgabe: ST param1, param2, param3, param4, param5, param6, param7
 # 	param1 - Wasseruhr Nr
 # 	param2 - IstWert
@@ -215,56 +210,104 @@ record(ao, "CL:set")
 # 	param6 - Kubikmeter
 # 	param7 - Liter, 1000 liter => 1 Kubikmeter
  
-record(ai, "uhr:Flow:get")
+record(ai, "uhr1:Flow:get")
+{
+    field(DESC, "Show current water flow rate")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:flow(1) $(PORT)")
+    field(SCAN, "10 second")
+}
+
+record(ai, "uhr1:Minsoll:get")
+{
+    field(DESC, "Show minimal water flow rate")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:minsoll(1) $(PORT)")
+    field(SCAN, "10 second")
+}
+
+record(ai, "uhr1:Maxsoll:get")
+{
+    field(DESC, "Show maximal water flow rate")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(1) $(PORT)")
+    field(SCAN, "10 second")
+}
+
+record(ai, "uhr1:Qn:get")
+{
+    field(DESC, "Set Qn value")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:Qn(1) $(PORT)")
+   field(SCAN, "1 second")
+}
+
+record(ai, "uhr1:Kubic:get")
+{
+    field(DESC, "Show cubic meter")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:kubic(1) $(PORT)")
+    field(SCAN, "1 second")
+}
+
+record(ai, "uhr1:Liter:get")
+{
+    field(DESC, "Show litter")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:litter(1) $(PORT)")
+    field(SCAN, "1 second")
+}
+
+record(ai, "uhr6:Flow:get")
 {
     field(DESC, "Show current water flow rate")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:flow(6) $(PORT)")
-    field (SCAN, "10 second")
+    field(SCAN, "10 second")
 }
 
-record(ai, "uhr:Minsoll:get")
+record(ai, "uhr6:Minsoll:get")
 {
-    field(DESC, "Show minimal water flow rate (Liter/hour)")
+    field(DESC, "Show minimal water flow rate")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:minsoll(6) $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "10 second")
 }
 
-record(ai, "uhr:Maxsoll:get")
+record(ai, "uhr6:Maxsoll:get")
 {
-    field(DESC, "Show maximal water flow rate (Litter/hour)")
+    field(DESC, "Show maximal water flow rate")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:maxsoll(6) $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
 
-record(ai, "uhr:Qn:get")
+record(ai, "uhr6:Qn:get")
 {
     field(DESC, "Set Qn value")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:Qn(6) $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 
-record(ai, "uhr:Kubic:get")
+record(ai, "uhr6:Kubic:get")
 {
     field(DESC, "Show cubic meter")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:kubic(6) $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 
-record(ai, "uhr:Liter:get")
+record(ai, "uhr6:Liter:get")
 {
     field(DESC, "Show litter")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr:litter(6) $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 
 
-#########################################################################################
+#############################################
 # Alarm: Al 1 - 15
  
 record(ai, "alarm:1")
@@ -272,7 +315,7 @@ record(ai, "alarm:1")
     field(DESC, "Show status of  water meter 1")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr1:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "10 second")
 }
 
 record(ai, "alarm:2")
@@ -280,107 +323,115 @@ record(ai, "alarm:2")
     field(DESC, "Show status of  water meter 2")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr2:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:3")
 {
     field(DESC, "Show status of  water meter 3")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr3:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:4")
 {
     field(DESC, "Show status of  water meter 4")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr4:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:5")
 {
     field(DESC, "Show status of  water meter 5")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr5:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:6")
 {
     field(DESC, "Show status of  water meter 6")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr6:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:7")
 {
     field(DESC, "Show status of  water meter 7")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr7:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:8")
 {
     field(DESC, "Show status of  water meter 8")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr8:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:9")
 {
     field(DESC, "Show status of  water meter 9")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr9:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:10")
 {
     field(DESC, "Show status of  water meter 10")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr10:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:11")
 {
     field(DESC, "Show status of  water meter 11")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr11:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:12")
 {
     field(DESC, "Show status of  water meter 12")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr12:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:13")
 {
     field(DESC, "Show status of  water meter 13")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr13:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:14")
 {
     field(DESC, "Show status of  water meter 14")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr14:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 record(ai, "alarm:15")
 {
     field(DESC, "Show status of  water meter 15")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr15:alarm $(PORT)")
-    #field (SCAN, "10 second")
+    field(SCAN, "1 second")
 }
 
+#check ok/not ok status of each uhr
+#record(calc, "uhr1:Ok") {
+#    field(INPA, "uhr1:Maxsoll:get")
+#    field(INPB, "uhr1:Minsoll:get")
+#    field(INPC, "uhr1:Flow:get")
+#    field(CALC, "(B<=C)&&(C<=A)?1:0")
+#}
 
+#timestamp the broken wasseruhr
 record(stringin, "timestamp")
 {
     field (DESC, "Timestamp the broken wasseruhr")
     field (DTYP, "Soft Timestamp")
     field (INP, "@%b %d, %Y %H:%M:%S.%09f")
-    field (SCAN, "5 second")
+    field(SCAN, "5 second")
 }
 
 

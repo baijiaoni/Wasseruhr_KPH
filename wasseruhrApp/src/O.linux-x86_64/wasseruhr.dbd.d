@@ -4,6 +4,7 @@
 ../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/autosave-5-6-1/dbd/asSupport.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/stream-2-6a/dbd/stream.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/drvAsynIPPort.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/asyn.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuGlobal.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuConvert.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/aaiRecord.dbd
@@ -35,6 +36,8 @@
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/subArrayRecord.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/waveformRecord.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/devSoft.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/asynRecord.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devEpics.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuAlarmSevr.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuAlarmStat.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuCompress.dbd
@@ -47,6 +50,18 @@
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuSimm.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/menuYesNo.dbd
 ../O.Common/wasseruhr.dbd : /home/epics/base-3.14.12.5/dbd/dbCommon.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynOctet.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynInt32.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynInt8Array.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynInt16Array.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynInt32Array.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynInt32TimeSeries.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynFloat64.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynFloat32Array.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynFloat64Array.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynFloat64TimeSeries.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynUInt32Digital.dbd
+../O.Common/wasseruhr.dbd : /home/epics/synApps_5_8/support/asyn-4-26/dbd/devAsynRecord.dbd
 
 
 ../O.Common/wasseruhrInclude.dbd : ../Makefile

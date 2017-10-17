@@ -20,6 +20,7 @@ wasseruhr_DBD += base.dbd
 wasseruhr_DBD += asSupport.dbd
 wasseruhr_DBD += stream.dbd
 wasseruhr_DBD += drvAsynIPPort.dbd
+wasseruhr_DBD += asyn.dbd
 #wasseruhr_DBD += sncExample.dbd
 
 # Add all the support libraries needed by this IOC
