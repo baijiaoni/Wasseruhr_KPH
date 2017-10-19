@@ -13,18 +13,35 @@ cd "${TOP}"
 dbLoadDatabase "dbd/wasseruhr.dbd"
 wasseruhr_registerRecordDeviceDriver pdbbase
 
-save_restoreSet_Debug(10)
+save_restoreSet_Debug(100)
 
 #< ./iocBoot/$(IOC)/AutoSaveSetup.cmd
 
 drvAsynIPPortConfigure("UHR_PORT","10.32.240.76:4006",0,0,0) 
 
-asynSetTraceIOMask("UHR_PORT",-1,0x2)
-asynSetTraceMask("UHR_PORT",-1,0x9)
+#asynSetTraceIOMask("UHR_PORT",-1,0x2)
+#asynSetTraceMask("UHR_PORT",-1,0x9)
 
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=baiHost")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=1, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=2, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=3, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=4, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=5, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=6, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=7, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=8, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=9, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=10, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=11, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=12, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=13, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=14, CARD=1")
+dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=15, CARD=1")
+
+#dbLoadTemplate("db/wasseruhr.subs")
+
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit

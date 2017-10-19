@@ -1,4 +1,4 @@
-ReplyTimeout = 5000;
+ReplyTimeout = 50000;
 
 OutTerminator =CR;
 #InTerminator =CR;
@@ -32,7 +32,7 @@ get:uhr:maxsoll {
 
 get:uhr:Qn {
   out "ST \$1";
-  in "ST %*u %*u %*u %*u %fN %*u %*u \r";
+  in "ST %*u %*u %*u %*u %f %*u %*u \r";
 }
 
 get:uhr:kubic {
@@ -48,12 +48,12 @@ get:uhr:litter {
 # alarm 
 get:uhr1:alarm {
   out "IN";
-  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+  in "IN %f %*d %*d %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 
 get:uhr2:alarm {
   out "IN";
-  in "IN %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+  in "IN %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 get:uhr3:alarm {
   out "IN";
@@ -129,7 +129,7 @@ set:uhr:Maxsoll {
 }
 
 set:uhr:Qn {
-  out "SE \$1 * * %f";
+  out "SE \$1 * * %.1f";
 }
 
 set:uhr:Kubic {

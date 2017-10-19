@@ -7,1075 +7,65 @@
 # 	param5 - Kubikmeter
 # 	param6 - Liter, 1000 liter => 1 Kubikmeter
  
-#Uhr 1
-record(ao, "uhr1:Minsoll:set")
+record(ao, "$(CARD):$(CHAN):Min:set")
 {
     field(DESC, "Set minimal water flow rate (Liter/hour)")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(1) $(PORT)")
-    field(PREC, "2")
+    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll($(CHAN)) $(PORT)")
+    field(PREC, "0")
     field(DRVH, "30000")
     field(HOPR, "30000")
     #field(EGU, "l/h")
 
 }
 
-record(ao, "uhr1:Maxsoll:set")
+record(ao, "$(CARD):$(CHAN):Max:set")
 {
     field(DESC, "Set maximal water flow rate ")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(1) $(PORT)")
-    field(PREC, "2")
+    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll($(CHAN)) $(PORT)")
+    field(PREC, "0")
     field(DRVH, "30000")
     field(HOPR, "30000")
     #field(EGU, "l/h")
 }
 
-record(ao, "uhr1:Qn:set")
+record(ao, "$(CARD):$(CHAN):Qn:set")
 {
     field(DESC, "Set Qn value")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(1) $(PORT)")
+    field(OUT,  "@wasseruhr.proto set:uhr:Qn($(CHAN)) $(PORT)")
+    field(PREC, "1")
     field(DRVH, "10")
     field(HOPR, "10")
     field(LOPR, "1")
     #field(EGU, "cubic meter/h")
 }
 
-record(ao, "uhr1:Kubic:set")
+record(ao, "$(CARD):$(CHAN):Kubic:set")
 {
     field(DESC, "Set cubic meter L/h")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(1) $(PORT)")
-    field(PREC, "2")
+    field(OUT,  "@wasseruhr.proto set:uhr:Kubic($(CHAN)) $(PORT)")
+    field(PREC, "0")
     field(DRVH, "1000")
     field(HOPR, "1000")
     field(LOPR, "0")
     #field(EGU, "cubic meter")
 }
 
-record(ao, "uhr1:Liter:set")
+record(ao, "$(CARD):$(CHAN):Liter:set")
 {
     field(DESC, "Set litter")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(1) $(PORT)")
-    field(PREC, "2")
+    field(OUT,  "@wasseruhr.proto set:uhr:Liter($(CHAN)) $(PORT)")
+    field(PREC, "0")
     field(DRVH, "1000")
     field(HOPR, "1000")
     field(LOPR, "0")
     #field(EGU, "litter")
 }
 
-#Uhr 2
-record(ao, "uhr2:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(2) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr2:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(2) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr2:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(2) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr2:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(2) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr2:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(2) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-
-#Uhr 3
-record(ao, "uhr3:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr3:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr3:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(3) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr3:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr3:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 3
-record(ao, "uhr3:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr3:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr3:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(3) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr3:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr3:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(3) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 4
-record(ao, "uhr4:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(4) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr4:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(4) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr4:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(4) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr4:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(4) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr4:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(4) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 5
-record(ao, "uhr5:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(5) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr5:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(5) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr5:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(5) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr5:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(5) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr5:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(5) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-# Uhr 6
-record(ao, "uhr6:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(6) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr6:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(6) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr6:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(6) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr6:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(6) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr6:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(6) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 7
-record(ao, "uhr7:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(7) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr7:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(7) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr7:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(7) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr7:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(7) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr7:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(7) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 8
-record(ao, "uhr8:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(8) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr8:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(8) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr8:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(8) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr8:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(8) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr8:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(8) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 9
-record(ao, "uhr9:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(9) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    field(LOPR, "0")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr9:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(9) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    field(LOPR, "0")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr9:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(9) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr9:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(9) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr9:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(9) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 8
-record(ao, "uhr10:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(10) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr10:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(10) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr10:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(10) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr10:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(10) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr10:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(10) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 11
-record(ao, "uhr11:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(11) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr11:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(11) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr11:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(11) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr11:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(11) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr11:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(11) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 12
-record(ao, "uhr12:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(12) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr12:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(12) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr12:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(12) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr12:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(12) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr12:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(12) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 13
-record(ao, "uhr13:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(13) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr13:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(13) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr13:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(13) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr13:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(13) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr13:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(13) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 14
-record(ao, "uhr14:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(14) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr14:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(14) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr14:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(14) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr14:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(14) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr14:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(14) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#Uhr 15
-record(ao, "uhr15:Minsoll:set")
-{
-    field(DESC, "Set minimal water flow rate (Liter/hour)")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll(15) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-
-}
-
-record(ao, "uhr15:Maxsoll:set")
-{
-    field(DESC, "Set maximal water flow rate ")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll(15) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "30000")
-    field(HOPR, "30000")
-    #field(EGU, "l/h")
-}
-
-record(ao, "uhr15:Qn:set")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn(15) $(PORT)")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
-}
-
-record(ao, "uhr15:Kubic:set")
-{
-    field(DESC, "Set cubic meter L/h")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic(15) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "cubic meter")
-}
-
-record(ao, "uhr15:Liter:set")
-{
-    field(DESC, "Set litter")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter(15) $(PORT)")
-    field(PREC, "2")
-    field(DRVH, "1000")
-    field(HOPR, "1000")
-    field(LOPR, "0")
-    #field(EGU, "litter")
-}
-#############################################
-# CL - clear interlock
-record(ao, "CL:set1")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(1) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set2")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(2) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set3")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(3) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set4")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(4) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set5")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(5) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set6")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(6) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set7")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(7) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set8")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(8) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set9")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(9) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set10")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(10) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set11")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(11) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set12")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(12) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set13")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(13) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set14")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(14) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
-record(ao, "CL:set15")
-{
-    field(DESC, "Clear the interlock queue")
-    field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL(15) $(PORT)")
-    field(DRVH, "1")
-    field(HOPR, "1")
-    field(LOPR, "1")
-}
 #############################################
 # Statusausgabe: ST param1, param2, param3, param4, param5, param6, param7
 # 	param1 - Wasseruhr Nr
@@ -1085,702 +75,77 @@ record(ao, "CL:set15")
 # 	param5 - Qn 1, 2, 3, 6 und 10 ~ 1.5, 2.5, 1.5N, 10N und 10
 # 	param6 - Kubikmeter
 # 	param7 - Liter, 1000 liter => 1 Kubikmeter
-# uhr1 
-record(ai, "uhr1:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(1) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr1:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(1) $(PORT)")
-    field(SCAN, "10 second")
-}
 
-record(ai, "uhr1:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(1) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr1:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(1) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr1:Maxsoll:get")
+record(ai, "$(CARD):$(CHAN):Max:get")
 {
     field(DESC, "Show maximal water flow rate")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(1) $(PORT)")
-    field(SCAN, "10 second")
+    field(INP,  "@wasseruhr.proto get:uhr:maxsoll($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
 }
 
-record(ai, "uhr1:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(1) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr2
-record(ai, "uhr2:Flow:get")
+record(ai, "$(CARD):$(CHAN):Flow:get")
 {
     field(DESC, "Show current water flow rate")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(2) $(PORT)")
-    field(SCAN, "10 second")
+    field(INP,  "@wasseruhr.proto get:uhr:flow($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
 }
-record(ai, "uhr2:Kubic:get")
+record(ai, "$(CARD):$(CHAN):Kubic:get")
 {
     field(DESC, "Show cubic meter")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(2) $(PORT)")
-    field(SCAN, "10 second")
+    field(INP,  "@wasseruhr.proto get:uhr:kubic($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
 }
 
-record(ai, "uhr2:Liter:get")
+record(ai, "$(CARD):$(CHAN):Liter:get")
 {
     field(DESC, "Show litter")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(2) $(PORT)")
-    field(SCAN, "10 second")
+    field(INP,  "@wasseruhr.proto get:uhr:litter($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
 }
-record(ai, "uhr2:Minsoll:get")
+record(ai, "$(CARD):$(CHAN):Min:get")
 {
     field(DESC, "Show minimal water flow rate")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(2) $(PORT)")
-    field(SCAN, "10 second")
+    field(INP,  "@wasseruhr.proto get:uhr:minsoll($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
+}
+#
+record(ai, "$(CARD):$(CHAN):Qn:get")
+{
+    field(DESC, "Get Qn value")
+    field(DTYP, "stream")
+    field(PREC, "1")
+    field(INP,  "@wasseruhr.proto get:uhr:Qn($(CHAN)) $(PORT)")
+    field(SCAN, "Passive")
+    #field(TPRO, "1")
 }
 
-record(ai, "uhr2:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(2) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr2:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(2) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr3
-record(ai, "uhr3:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr3:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr3:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr3:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr3:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr3:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(3) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 4
-record(ai, "uhr4:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr4:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr4:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr4:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr4:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr4:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(4) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 5
-record(ai, "uhr5:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr5:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr5:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr5:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr5:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr5:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(5) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 6
-record(ai, "uhr6:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr6:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr6:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr6:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr6:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr6:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(6) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 7
-record(ai, "uhr7:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr7:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr7:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr7:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr7:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr7:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(7) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 8
-record(ai, "uhr8:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr8:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr8:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr8:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr8:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr8:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(8) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 9
-record(ai, "uhr9:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr9:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr9:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr9:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr9:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr9:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(9) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 10
-record(ai, "uhr10:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr10:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr10:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr10:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr10:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr10:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(10) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 11
-record(ai, "uhr11:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr11:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr11:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr11:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr11:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr11:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(11) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 12
-record(ai, "uhr12:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr12:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr12:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr12:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr12:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr12:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(12) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 13
-record(ai, "uhr13:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr13:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr13:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr13:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr13:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr13:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(13) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 14
-record(ai, "uhr14:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(14) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr14:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(14) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr14:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(14) $(PORT)")
-    #field(SCAN, "10 second")
-}
-record(ai, "uhr14:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(14) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr14:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(14) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr14:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(14) $(PORT)")
-    field(SCAN, "10 second")
-}
-#uhr 15
-record(ai, "uhr15:Flow:get")
-{
-    field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow(15) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr15:Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic(15) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr15:Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter(15) $(PORT)")
-    field(SCAN, "10 second")
-}
-record(ai, "uhr15:Minsoll:get")
-{
-    field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll(15) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr15:Maxsoll:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll(15) $(PORT)")
-    field(SCAN, "10 second")
-}
-
-record(ai, "uhr15:Qn:get")
-{
-    field(DESC, "Set Qn value")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn(15) $(PORT)")
-    field(SCAN, "10 second")
-}
 #############################################
+# CL - clear interlock
+record(ao, "$(CARD):$(CHAN):CL:set")
+{
+    field(DESC, "Clear the interlock queue")
+    field(DTYP, "stream")
+    field(OUT,  "@wasseruhr.proto set:uhr:CL($(CHAN)) $(PORT)")
+    field(DRVH, "1")
+    field(HOPR, "1")
+    field(LOPR, "1")
+    field(SCAN, "Passive")
+}
+
+##############################################
 # Alarm: Al 1 - 15
  
-record(ai, "alarm:1")
+record(ai, "$(CARD):alarm:1")
 {
     field(DESC, "Show status of  water meter 1")
     field(DTYP, "stream")
@@ -1788,120 +153,354 @@ record(ai, "alarm:1")
     field(SCAN, "10 second")
 }
 
-record(ai, "alarm:2")
+record(ai, "$(CARD):alarm:2")
 {
     field(DESC, "Show status of  water meter 2")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr2:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:3")
+record(ai, "$(CARD):alarm:3")
 {
     field(DESC, "Show status of  water meter 3")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr3:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:4")
+record(ai, "$(CARD):alarm:4")
 {
     field(DESC, "Show status of  water meter 4")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr4:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:5")
+record(ai, "$(CARD):alarm:5")
 {
     field(DESC, "Show status of  water meter 5")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr5:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:6")
+record(ai, "$(CARD):alarm:6")
 {
     field(DESC, "Show status of  water meter 6")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr6:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:7")
+record(ai, "$(CARD):alarm:7")
 {
     field(DESC, "Show status of  water meter 7")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr7:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:8")
+record(ai, "$(CARD):alarm:8")
 {
     field(DESC, "Show status of  water meter 8")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr8:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:9")
+record(ai, "$(CARD):alarm:9")
 {
     field(DESC, "Show status of  water meter 9")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr9:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:10")
+record(ai, "$(CARD):alarm:10")
 {
     field(DESC, "Show status of  water meter 10")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr10:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:11")
+record(ai, "$(CARD):alarm:11")
 {
     field(DESC, "Show status of  water meter 11")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr11:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:12")
+record(ai, "$(CARD):alarm:12")
 {
     field(DESC, "Show status of  water meter 12")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr12:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "10 second")
 }
-record(ai, "alarm:13")
+record(ai, "$(CARD):alarm:13")
 {
     field(DESC, "Show status of  water meter 13")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr13:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "5 second")
 }
-record(ai, "alarm:14")
+record(ai, "$(CARD):alarm:14")
 {
     field(DESC, "Show status of  water meter 14")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr14:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "5 second")
 }
-record(ai, "alarm:15")
+record(ai, "$(CARD):alarm:15")
 {
     field(DESC, "Show status of  water meter 15")
     field(DTYP, "stream")
     field(INP,  "@wasseruhr.proto get:uhr15:alarm $(PORT)")
-    #field(SCAN, "10 second")
+    field(SCAN, "5 second")
 }
 
 #check ok/not ok status of each uhr
-#record(calc, "uhr1:Ok") {
-#    field(INPA, "uhr1:Maxsoll:get")
-#    field(INPB, "uhr1:Minsoll:get")
-#    field(INPC, "uhr1:Flow:get")
-#    field(CALC, "(B<=C)&&(C<=A)?1:0")
-#}
+record(calc, "$(CARD):1:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(CALC, "A=1?1:0")
+    field(SCAN, "1 second")
+}
 
+record(calc, "$(CARD):2:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(CALC, "A=2||B=2?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+
+record(calc, "$(CARD):3:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(CALC, "A=3||B=3||C=3?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+
+record(calc, "$(CARD):4:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(CALC, "A=4||B=4||C=4||D=4?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):5:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(CALC, "A=5||B=5||C=5||D=5||E=5?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):6:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(CALC, "A=6||B=6||C=6||D=6||E=6||F=6?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):7:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(CALC, "A=7||B=7||C=7||D=7||E=7||F=7||G=7?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):8:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(INPH, "$(CARD):alarm:8")
+    field(CALC, "A=8||B=8||C=8||D=8||E=8||F=8||G=8?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):9:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(INPH, "$(CARD):alarm:8")
+    field(INPI, "$(CARD):alarm:9")
+    field(CALC, "A=9||B=9||C=9||D=9||E=9||F=9||G=9||H=9||I=9?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):10:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(INPH, "$(CARD):alarm:8")
+    field(INPI, "$(CARD):alarm:9")
+    field(INPJ, "$(CARD):alarm:10")
+    field(CALC, "A=10||B=10||C=10||D=10||E=10||F=10||G=10||H=10||I=10||J=10?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):11:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(INPH, "$(CARD):alarm:8")
+    field(INPI, "$(CARD):alarm:9")
+    field(INPJ, "$(CARD):alarm:10")
+    field(INPK, "$(CARD):alarm:11")
+    field(CALC, "A=11||B=11||C=11||D=11||E=11||F=11||G=11||H=11||I=11||J=11||K=11?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):12:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(INPG, "$(CARD):alarm:7")
+    field(INPH, "$(CARD):alarm:8")
+    field(INPI, "$(CARD):alarm:9")
+    field(INPJ, "$(CARD):alarm:10")
+    field(INPK, "$(CARD):alarm:11")
+    field(INPL, "$(CARD):alarm:12")
+    field(CALC, "A=12||B=12||C=12||D=12||E=12||F=12||G=12||H=12||I=12||J=12||K=12||L=12?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+#status of uhr13 check
+record(calc, "$(CARD):13a:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(CALC, "A=13||B=13||C=13||D=13||E=13||F=13?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):13b:alarm") {
+    field(INPA, "$(CARD):alarm:7")
+    field(INPB, "$(CARD):alarm:8")
+    field(INPC, "$(CARD):alarm:9")
+    field(INPD, "$(CARD):alarm:10")
+    field(INPE, "$(CARD):alarm:11")
+    field(INPF, "$(CARD):alarm:12")
+    field(INPG, "$(CARD):alarm:13")
+    field(CALC, "A=13||B=13||C=13||D=13||E=13||F=13||G=13?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+
+record(calc, "$(CARD):13:alarm") {
+    field(INPA, "$(CARD):13a:alarm")
+    field(INPB, "$(CARD):13b:alarm")
+    field(CALC, "A|B?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+
+#status of uhr14 check
+record(calc, "$(CARD):14a:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(CALC, "A=14||B=14||C=14||D=14||E=14||F=14?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):14b:alarm") {
+    field(INPA, "$(CARD):alarm:7")
+    field(INPB, "$(CARD):alarm:8")
+    field(INPC, "$(CARD):alarm:9")
+    field(INPD, "$(CARD):alarm:10")
+    field(INPE, "$(CARD):alarm:11")
+    field(INPF, "$(CARD):alarm:12")
+    field(INPG, "$(CARD):alarm:13")
+    field(INPH, "$(CARD):alarm:14")
+    field(CALC, "A=14||B=14||C=14||D=14||E=14||F=14||G=14||H=14?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+
+record(calc, "$(CARD):14:alarm") {
+    field(INPA, "$(CARD):14a:alarm")
+    field(INPB, "$(CARD):14b:alarm")
+    field(CALC, "A|B?1:0")
+    field(SCAN, "10 second")
+    #field(TPRO, "1")
+}
+
+#status of uhr15 check
+record(calc, "$(CARD):15a:alarm") {
+    field(INPA, "$(CARD):alarm:1")
+    field(INPB, "$(CARD):alarm:2")
+    field(INPC, "$(CARD):alarm:3")
+    field(INPD, "$(CARD):alarm:4")
+    field(INPE, "$(CARD):alarm:5")
+    field(INPF, "$(CARD):alarm:6")
+    field(CALC, "A=15||B=15||C=15||D=15||E=15||F=15?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+record(calc, "$(CARD):15b:alarm") {
+    field(INPA, "$(CARD):alarm:7")
+    field(INPB, "$(CARD):alarm:8")
+    field(INPC, "$(CARD):alarm:9")
+    field(INPD, "$(CARD):alarm:10")
+    field(INPE, "$(CARD):alarm:11")
+    field(INPF, "$(CARD):alarm:12")
+    field(INPG, "$(CARD):alarm:13")
+    field(INPH, "$(CARD):alarm:14")
+    field(INPI, "$(CARD):alarm:15")
+    field(CALC, "A=15||B=15||C=15||D=15||E=15||F=15||G=15||H=15||I=15?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
+
+record(calc, "$(CARD):15:alarm") {
+    field(INPA, "$(CARD):15a:alarm")
+    field(INPB, "$(CARD):15b:alarm")
+    field(CALC, "A|B?1:0")
+    field(SCAN, "5 second")
+    #field(TPRO, "1")
+}
 #timestamp the broken wasseruhr
 record(stringin, "timestamp")
 {
     field (DESC, "Timestamp the broken wasseruhr")
     field (DTYP, "Soft Timestamp")
     field (INP, "@%b %d, %Y %H:%M:%S.%09f")
-    field(SCAN, "5 second")
+    field(SCAN, "Passive")
 }
 
 
