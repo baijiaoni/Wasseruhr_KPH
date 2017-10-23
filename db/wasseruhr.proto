@@ -1,5 +1,6 @@
 ReplyTimeout = 50000;
-
+# define the record waiting time in the queue to be processed
+lockTimeout = 300000;
 OutTerminator =CR;
 #InTerminator =CR;
 # configure water mess 1
@@ -33,6 +34,7 @@ get:uhr:maxsoll {
 get:uhr:Qn {
   out "ST \$1";
   in "ST %*u %*u %*u %*u %f %*u %*u \r";
+  @mismatch{in "ST %*u %*u %*u %*u %fN %*u %*u \r"};
 }
 
 get:uhr:kubic {
@@ -53,7 +55,7 @@ get:uhr1:alarm {
 
 get:uhr2:alarm {
   out "IN";
-  in "IN %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+  in "IN %*f %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
 }
 get:uhr3:alarm {
   out "IN";

@@ -42,6 +42,8 @@ dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=15, CARD=1")
 
 #dbLoadTemplate("db/wasseruhr.subs")
 
+#enable debug output
+#var streamDebug 1
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
