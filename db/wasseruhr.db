@@ -123,7 +123,7 @@ record(longin, "$(CARD):$(CHAN):Liter:get")
     field(INP,  "@wasseruhr.proto get:uhr:status($(CARD),$(CHAN)) $(PORT)")
     field(EGU,  "l")
     field(PINI, "YES")
-    #field(SCAN, "1 second")
+    field(SCAN, "1 second")
     #field(TPRO, "1")
 }
 #############################################
@@ -137,6 +137,7 @@ record(ao, "$(CARD):$(CHAN):CL:set")
     field(HOPR, "1")
     field(LOPR, "1")
     field(PRIO, "HIGH")
+    field(FLNK, "$(CARD):$(CHAN):trigger-default")
 }
 
 ##############################################
@@ -148,7 +149,8 @@ record(bi, "$(CARD):1:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
-    field(TPRO, "1")
+    #field(TPRO, "1")
+    field(FLNK, "$(CARD):1:trigger-TS")
 }
 record(bi, "$(CARD):2:alarm")
 {
@@ -156,6 +158,7 @@ record(bi, "$(CARD):2:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):2:trigger-TS")
 }
 record(bi, "$(CARD):3:alarm")
 {
@@ -163,6 +166,7 @@ record(bi, "$(CARD):3:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):3:trigger-TS")
 }
 record(bi, "$(CARD):4:alarm")
 {
@@ -170,6 +174,7 @@ record(bi, "$(CARD):4:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):4:trigger-TS")
 }
 record(bi, "$(CARD):5:alarm")
 {
@@ -177,6 +182,7 @@ record(bi, "$(CARD):5:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):5:trigger-TS")
 }
 record(bi, "$(CARD):6:alarm")
 {
@@ -184,6 +190,7 @@ record(bi, "$(CARD):6:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):6:trigger-TS")
 }
 record(bi, "$(CARD):7:alarm")
 {
@@ -191,6 +198,7 @@ record(bi, "$(CARD):7:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):7:trigger-TS")
 }
 record(bi, "$(CARD):8:alarm")
 {
@@ -198,6 +206,7 @@ record(bi, "$(CARD):8:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):8:trigger-TS")
 }
 record(bi, "$(CARD):9:alarm")
 {
@@ -205,6 +214,7 @@ record(bi, "$(CARD):9:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):9:trigger-TS")
 }
 record(bi, "$(CARD):10:alarm")
 {
@@ -212,6 +222,7 @@ record(bi, "$(CARD):10:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):10:trigger-TS")
 }
 record(bi, "$(CARD):11:alarm")
 {
@@ -219,6 +230,7 @@ record(bi, "$(CARD):11:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):11:trigger-TS")
 }
 record(bi, "$(CARD):12:alarm")
 {
@@ -226,6 +238,7 @@ record(bi, "$(CARD):12:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):12:trigger-TS")
 }
 record(bi, "$(CARD):13:alarm")
 {
@@ -233,6 +246,7 @@ record(bi, "$(CARD):13:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):13:trigger-TS")
 }
 record(bi, "$(CARD):14:alarm")
 {
@@ -240,6 +254,7 @@ record(bi, "$(CARD):14:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(FLNK, "$(CARD):14:trigger-TS")
 }
 record(bi, "$(CARD):15:alarm")
 {
@@ -250,14 +265,32 @@ record(bi, "$(CARD):15:alarm")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
     field(SCAN, "1 second")
+    field(FLNK, "$(CARD):15:trigger-TS")
+}
+
+#timestamp alarm of water meter
+record(calcout, "$(CARD):$(CHAN):trigger-TS")
+{
+    field(INPA, "$(CARD):$(CHAN):alarm")
+    field(OOPT, "Transition To Non-zero")
+    field(CALC, "A=1")
+    field(OUT,  "$(CARD):$(CHAN):alarm-timestamp.PROC")
     field(TPRO, "1")
 }
 
-#timestamp the broken wasseruhr
-record(stringin, "timestamp")
+record(calcout, "$(CARD):$(CHAN):trigger-default")
 {
-    field (DESC, "Timestamp the broken wasseruhr")
-    field (DTYP, "Soft Timestamp")
-    field (INP, "@%b %d, %Y %H:%M:%S.%09f")
-    #field(SCAN, "11 second")
+    field(INPA, "$(CARD):$(CHAN):alarm")
+    field(CALC, "A=0")
+    field(OUT,  "$(CARD):$(CHAN):alarm-timestamp.PROC")
+    field(TPRO, "1")
+}
+
+record (stringin, "$(CARD):$(CHAN):alarm-timestamp")
+{
+    field(DESC, "Timestamp the alarm water meter")
+    field(DTYP, "Soft Timestamp")
+    field(INP,  "@%b %d, %Y %H:%M:%S")
+    #field(INP,  "@%b %d, %Y %H:%M:%S.%0f")
+    field(TPRO, "1")
 }
