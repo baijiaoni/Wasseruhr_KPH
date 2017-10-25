@@ -39,7 +39,7 @@ dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=12, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=13, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=14, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=15, CARD=1")
-
+#
 #dbLoadTemplate("db/wasseruhr.subs")
 
 #enable debug output

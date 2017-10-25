@@ -7,63 +7,63 @@
 # 	param5 - Kubikmeter
 # 	param6 - Liter, 1000 liter => 1 Kubikmeter
  
-record(ao, "$(CARD):$(CHAN):Min:set")
+record(longout, "$(CARD):$(CHAN):Min:set")
 {
     field(DESC, "Set minimal water flow rate (Liter/hour)")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Minsoll($(CHAN)) $(PORT)")
-    field(PREC, "0")
+    field(OUT,  "@wasseruhr.proto set:uhr:Min($(CARD),$(CHAN)) $(PORT)")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    #field(EGU, "l/h")
-
+    field(EGU,  "l/h")
+    field(PRIO, "HIGH")
 }
 
-record(ao, "$(CARD):$(CHAN):Max:set")
+record(longout, "$(CARD):$(CHAN):Max:set")
 {
     field(DESC, "Set maximal water flow rate ")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Maxsoll($(CHAN)) $(PORT)")
-    field(PREC, "0")
+    field(OUT,  "@wasseruhr.proto set:uhr:Max($(CARD),$(CHAN)) $(PORT)")
     field(DRVH, "30000")
     field(HOPR, "30000")
-    #field(EGU, "l/h")
+    field(EGU,  "l/h")
+    field(PRIO, "HIGH")
 }
 
-record(ao, "$(CARD):$(CHAN):Qn:set")
+record(mbbo, "$(CARD):$(CHAN):Qn:set")
 {
     field(DESC, "Set Qn value")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Qn($(CHAN)) $(PORT)")
-    field(PREC, "1")
-    field(DRVH, "10")
-    field(HOPR, "10")
-    field(LOPR, "1")
-    #field(EGU, "cubic meter/h")
+    field(OUT,  "@wasseruhr.proto set:uhr:Qn($(CARD),$(CHAN)) $(PORT)")
+    field(ZRST, "1.5")
+    field(ONST, "2.5")
+    field(TWST, "3.5")
+    field(THST, "6")
+    field(FRST, "10")
+    field(PRIO, "HIGH")
 }
 
-record(ao, "$(CARD):$(CHAN):Kubic:set")
+record(longout, "$(CARD):$(CHAN):Kubic:set")
 {
     field(DESC, "Set cubic meter L/h")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Kubic($(CHAN)) $(PORT)")
-    field(PREC, "0")
+    field(OUT,  "@wasseruhr.proto set:uhr:Kubic($(CARD),$(CHAN)) $(PORT)")
     field(DRVH, "1000")
     field(HOPR, "1000")
     field(LOPR, "0")
-    #field(EGU, "cubic meter")
+    field(EGU,  "m^3")
+    field(PRIO, "HIGH")
 }
 
-record(ao, "$(CARD):$(CHAN):Liter:set")
+record(longout, "$(CARD):$(CHAN):Liter:set")
 {
-    field(DESC, "Set litter")
+    field(DESC, "Set liter")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:Liter($(CHAN)) $(PORT)")
-    field(PREC, "0")
+    field(OUT,  "@wasseruhr.proto set:uhr:Liter($(CARD),$(CHAN)) $(PORT)")
     field(DRVH, "1000")
     field(HOPR, "1000")
     field(LOPR, "0")
-    #field(EGU, "litter")
+    field(EGU,  "l")
+    field(PRIO, "HIGH")
 }
 
 #############################################
@@ -76,431 +76,181 @@ record(ao, "$(CARD):$(CHAN):Liter:set")
 # 	param6 - Kubikmeter
 # 	param7 - Liter, 1000 liter => 1 Kubikmeter
 
-record(ai, "$(CARD):$(CHAN):Max:get")
-{
-    field(DESC, "Show maximal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:maxsoll($(CHAN)) $(PORT)")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
-    #field(TPRO, "1")
-}
 
-record(ai, "$(CARD):$(CHAN):Flow:get")
+record(longin, "$(CARD):$(CHAN):Flow:get")
 {
     field(DESC, "Show current water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:flow($(CHAN)) $(PORT)")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(ai, "$(CARD):$(CHAN):Kubic:get")
-{
-    field(DESC, "Show cubic meter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:kubic($(CHAN)) $(PORT)")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
+    field(EGU,  "l/h")
     #field(TPRO, "1")
 }
 
-record(ai, "$(CARD):$(CHAN):Liter:get")
-{
-    field(DESC, "Show litter")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:litter($(CHAN)) $(PORT)")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
-    #field(TPRO, "1")
-}
-record(ai, "$(CARD):$(CHAN):Min:get")
+record(longin, "$(CARD):$(CHAN):Min:get")
 {
     field(DESC, "Show minimal water flow rate")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr:minsoll($(CHAN)) $(PORT)")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
+    field(EGU,  "l/h")
     #field(TPRO, "1")
 }
 
-record(ai, "$(CARD):$(CHAN):Qn:get")
+record(longin, "$(CARD):$(CHAN):Max:get")
+{
+    field(DESC, "Show maximal water flow rate")
+    field(EGU,  "l/h")
+    #field(TPRO, "1")
+}
+
+record(longin, "$(CARD):$(CHAN):Kubic:get")
+{
+    field(DESC, "Show cubic meter")
+    field(EGU,  "m^3")
+    #field(TPRO, "1")
+}
+
+record(mbbi, "$(CARD):$(CHAN):Qn:get")
 {
     field(DESC, "Get Qn value")
-    field(DTYP, "stream")
-    field(PREC, "1")
-    field(INP,  "@wasseruhr.proto get:uhr:Qn($(CHAN)) $(PORT)")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
+    field(ZRST, "1.5")
+    field(ONST, "2.5")
+    field(TWST, "1.5N")
+    field(THST, "10.N")
+    field(FRST, "10.0")
     #field(TPRO, "1")
 }
 
+record(longin, "$(CARD):$(CHAN):Liter:get")
+{
+    field(DESC, "Show liter")
+    field(DTYP, "stream")
+    field(INP,  "@wasseruhr.proto get:uhr:status($(CARD),$(CHAN)) $(PORT)")
+    field(EGU,  "l")
+    field(PINI, "YES")
+    #field(SCAN, "1 second")
+    #field(TPRO, "1")
+}
 #############################################
 # CL - clear interlock
 record(ao, "$(CARD):$(CHAN):CL:set")
 {
     field(DESC, "Clear the interlock queue")
     field(DTYP, "stream")
-    field(OUT,  "@wasseruhr.proto set:uhr:CL($(CHAN)) $(PORT)")
+    field(OUT,  "@wasseruhr.proto set:uhr:CL($(CARD),$(CHAN)) $(PORT)")
     field(DRVH, "1")
     field(HOPR, "1")
     field(LOPR, "1")
-    field(SCAN, "5 second") #field(SCAN, "Passive")
+    field(PRIO, "HIGH")
 }
 
 ##############################################
 # Alarm: Al 1 - 15
  
-record(ai, "$(CARD):alarm:1")
+record(bi, "$(CARD):1:alarm")
 {
-    field(DESC, "Show status of  water meter 1")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr1:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 1")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
+    field(TPRO, "1")
 }
-
-record(ai, "$(CARD):alarm:2")
+record(bi, "$(CARD):2:alarm")
 {
-    field(DESC, "Show status of  water meter 2")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr2:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 2")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:3")
+record(bi, "$(CARD):3:alarm")
 {
-    field(DESC, "Show status of  water meter 3")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr3:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 3")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:4")
+record(bi, "$(CARD):4:alarm")
 {
-    field(DESC, "Show status of  water meter 4")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr4:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 4")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:5")
+record(bi, "$(CARD):5:alarm")
 {
-    field(DESC, "Show status of  water meter 5")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr5:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 5")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:6")
+record(bi, "$(CARD):6:alarm")
 {
-    field(DESC, "Show status of  water meter 6")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr6:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 6")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:7")
+record(bi, "$(CARD):7:alarm")
 {
-    field(DESC, "Show status of  water meter 7")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr7:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 7")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:8")
+record(bi, "$(CARD):8:alarm")
 {
-    field(DESC, "Show status of  water meter 8")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr8:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 8")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:9")
+record(bi, "$(CARD):9:alarm")
 {
-    field(DESC, "Show status of  water meter 9")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr9:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 9")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:10")
+record(bi, "$(CARD):10:alarm")
 {
-    field(DESC, "Show status of  water meter 10")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr10:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 10")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:11")
+record(bi, "$(CARD):11:alarm")
 {
-    field(DESC, "Show status of  water meter 11")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr11:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 11")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:12")
+record(bi, "$(CARD):12:alarm")
 {
-    field(DESC, "Show status of  water meter 12")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr12:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 12")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:13")
+record(bi, "$(CARD):13:alarm")
 {
-    field(DESC, "Show status of  water meter 13")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr13:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 13")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:14")
+record(bi, "$(CARD):14:alarm")
 {
-    field(DESC, "Show status of  water meter 14")
-    field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr14:alarm $(PORT)")
-    field(SCAN, "7 second")
+    field(DESC, "Show status of water meter 14")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
 }
-record(ai, "$(CARD):alarm:15")
+record(bi, "$(CARD):15:alarm")
 {
-    field(DESC, "Show status of  water meter 15")
+    field(DESC, "Show status of water meter 15")
     field(DTYP, "stream")
-    field(INP,  "@wasseruhr.proto get:uhr15:alarm $(PORT)")
-    field(SCAN, "7 second")
-}
-
-#check ok/not ok status of each uhr
-record(calc, "$(CARD):1:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(CALC, "A=1?1:0")
-    field(SCAN, "11 second")
-}
-
-record(calc, "$(CARD):2:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(CALC, "A=2||B=2?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-record(calc, "$(CARD):3:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(CALC, "A=3||B=3||C=3?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-#record(calc, "$(CARD):3o:alarm") {
-#    field(INPA, "$(CARD):alarm:1")
-#    field(INPB, "$(CARD):alarm:2")
-#    field(INPC, "$(CARD):alarm:3")
-#    field(CALC, "A=3||B=3||C=3?1:0")
-#    field(SCAN, "2 second")
-#    #field(TPRO, "1")
-#}
-record(calc, "$(CARD):4:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(CALC, "A=4||B=4||C=4||D=4?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):5:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(CALC, "A=5||B=5||C=5||D=5||E=5?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):6:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(CALC, "A=6||B=6||C=6||D=6||E=6||F=6?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):7:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(CALC, "A=7||B=7||C=7||D=7||E=7||F=7||G=7?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):8:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(INPH, "$(CARD):alarm:8")
-    field(CALC, "A=8||B=8||C=8||D=8||E=8||F=8||G=8?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):9:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(INPH, "$(CARD):alarm:8")
-    field(INPI, "$(CARD):alarm:9")
-    field(CALC, "A=9||B=9||C=9||D=9||E=9||F=9||G=9||H=9||I=9?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):10:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(INPH, "$(CARD):alarm:8")
-    field(INPI, "$(CARD):alarm:9")
-    field(INPJ, "$(CARD):alarm:10")
-    field(CALC, "A=10||B=10||C=10||D=10||E=10||F=10||G=10||H=10||I=10||J=10?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):11:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(INPH, "$(CARD):alarm:8")
-    field(INPI, "$(CARD):alarm:9")
-    field(INPJ, "$(CARD):alarm:10")
-    field(INPK, "$(CARD):alarm:11")
-    field(CALC, "A=11||B=11||C=11||D=11||E=11||F=11||G=11||H=11||I=11||J=11||K=11?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):12:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(INPG, "$(CARD):alarm:7")
-    field(INPH, "$(CARD):alarm:8")
-    field(INPI, "$(CARD):alarm:9")
-    field(INPJ, "$(CARD):alarm:10")
-    field(INPK, "$(CARD):alarm:11")
-    field(INPL, "$(CARD):alarm:12")
-    field(CALC, "A=12||B=12||C=12||D=12||E=12||F=12||G=12||H=12||I=12||J=12||K=12||L=12?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-#status of uhr13 check
-record(calc, "$(CARD):13a:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(CALC, "A=13||B=13||C=13||D=13||E=13||F=13?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):13b:alarm") {
-    field(INPA, "$(CARD):alarm:7")
-    field(INPB, "$(CARD):alarm:8")
-    field(INPC, "$(CARD):alarm:9")
-    field(INPD, "$(CARD):alarm:10")
-    field(INPE, "$(CARD):alarm:11")
-    field(INPF, "$(CARD):alarm:12")
-    field(INPG, "$(CARD):alarm:13")
-    field(CALC, "A=13||B=13||C=13||D=13||E=13||F=13||G=13?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-record(calc, "$(CARD):13:alarm") {
-    field(INPA, "$(CARD):13a:alarm")
-    field(INPB, "$(CARD):13b:alarm")
-    field(CALC, "A|B?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-#status of uhr14 check
-record(calc, "$(CARD):14a:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(CALC, "A=14||B=14||C=14||D=14||E=14||F=14?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):14b:alarm") {
-    field(INPA, "$(CARD):alarm:7")
-    field(INPB, "$(CARD):alarm:8")
-    field(INPC, "$(CARD):alarm:9")
-    field(INPD, "$(CARD):alarm:10")
-    field(INPE, "$(CARD):alarm:11")
-    field(INPF, "$(CARD):alarm:12")
-    field(INPG, "$(CARD):alarm:13")
-    field(INPH, "$(CARD):alarm:14")
-    field(CALC, "A=14||B=14||C=14||D=14||E=14||F=14||G=14||H=14?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-record(calc, "$(CARD):14:alarm") {
-    field(INPA, "$(CARD):14a:alarm")
-    field(INPB, "$(CARD):14b:alarm")
-    field(CALC, "A|B?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-#status of uhr15 check
-record(calc, "$(CARD):15a:alarm") {
-    field(INPA, "$(CARD):alarm:1")
-    field(INPB, "$(CARD):alarm:2")
-    field(INPC, "$(CARD):alarm:3")
-    field(INPD, "$(CARD):alarm:4")
-    field(INPE, "$(CARD):alarm:5")
-    field(INPF, "$(CARD):alarm:6")
-    field(CALC, "A=15||B=15||C=15||D=15||E=15||F=15?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-record(calc, "$(CARD):15b:alarm") {
-    field(INPA, "$(CARD):alarm:7")
-    field(INPB, "$(CARD):alarm:8")
-    field(INPC, "$(CARD):alarm:9")
-    field(INPD, "$(CARD):alarm:10")
-    field(INPE, "$(CARD):alarm:11")
-    field(INPF, "$(CARD):alarm:12")
-    field(INPG, "$(CARD):alarm:13")
-    field(INPH, "$(CARD):alarm:14")
-    field(INPI, "$(CARD):alarm:15")
-    field(CALC, "A=15||B=15||C=15||D=15||E=15||F=15||G=15||H=15||I=15?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
-}
-
-record(calc, "$(CARD):15:alarm") {
-    field(INPA, "$(CARD):15a:alarm")
-    field(INPB, "$(CARD):15b:alarm")
-    field(CALC, "A|B?1:0")
-    field(SCAN, "11 second")
-    #field(TPRO, "1")
+    field(INP,  "@wasseruhr.proto get:uhr:alarm($(CARD)) $(PORT)")
+    field(ZNAM, "OK")
+    field(ONAM, "Alarm")
+    field(OSV,  "MAJOR")
+    field(SCAN, "1 second")
+    field(TPRO, "1")
 }
 
 #timestamp the broken wasseruhr
@@ -509,5 +259,5 @@ record(stringin, "timestamp")
     field (DESC, "Timestamp the broken wasseruhr")
     field (DTYP, "Soft Timestamp")
     field (INP, "@%b %d, %Y %H:%M:%S.%09f")
-    field(SCAN, "11 second")
+    #field(SCAN, "11 second")
 }

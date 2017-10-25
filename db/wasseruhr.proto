@@ -1,144 +1,94 @@
-ReplyTimeout = 50000;
+replytimeout = 1000;
+readtimeout = 5000;
+writetimeout = 2000;
 # define the record waiting time in the queue to be processed
-lockTimeout = 300000;
-OutTerminator =CR;
-#InTerminator =CR;
-# configure water mess 1
-
+locktimeout = 5000;
+#In & out terminator must be defined, otherwise the readTimeout & replyTimeout will be used
+outterminator = CR;
+interminator = CR;
 
 set:uhr:CL {
-  out "CL \$1";
+  extraInput = ignore;
+  out "CL \$2";
+  in "CL";
 }
 
-get:uhr:Nr {
-  out "ST 1";
-  in "ST %d %*u %*u %*u %*fN %*u %*u \r";
-}
-
-
-get:uhr:flow {
-  out "ST \$1";
-  in "ST %*u %d %*u %*u %*fN %*u %*u \r";
-}
-
-get:uhr:minsoll {
-  out "ST \$1";
-  in "ST %*u %*u %d %*u %*fN %*u %*u \r";
-}
-
-get:uhr:maxsoll {
-  out "ST \$1";
-  in "ST %*u %*u %*u %d %*fN %*u %*u \r";
-}
-
-get:uhr:Qn {
-  out "ST \$1";
-  in "ST %*u %*u %*u %*u %f %*u %*u \r";
-  @mismatch{in "ST %*u %*u %*u %*u %fN %*u %*u \r"};
-}
-
-get:uhr:kubic {
-  out "ST \$1";
-  in "ST %*u %*u %*u %*u %*fN %d %*u \r";
-}
-
-get:uhr:litter {
-  out "ST \$1";
-  in "ST %*u %*u %*u %*u %*fN %*u %d \r";
+get:uhr:Status {
+  # Parameters: 1=CARD, 2=CHAN
+  out "ST \$2";
+  in "ST\_\$2\_%(\$1:\$2:Flow:get.VAL)u\_"
+            "%(\$1:\$2:Min:get.VAL)d\_"
+            "%(\$1:\$2:Max:get.VAL)d\_"
+            "%(\$1:\$2:Qn:get.VAL)#{1.5N=2|2.5=1|1.5=0|10.N=3|10.0}\_"
+            "%(\$1:\$2:Kubic:get.VAL)u\_"
+            "%u\_"; # last is Liter
 }
 
 # alarm 
-get:uhr1:alarm {
+get:uhr:alarm {
   out "IN";
-  in "IN %f %*d %*d %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+  in "IN %(\$1:1:alarm.VAL)#{ 1 =1|=0}"
+       "%(\$1:2:alarm.VAL)#{ 2 =1|=0}"
+       "%(\$1:3:alarm.VAL)#{ 3 =1|=0}"
+       "%(\$1:4:alarm.VAL)#{ 4 =1|=0}"
+       "%(\$1:5:alarm.VAL)#{ 5 =1|=0}"
+       "%(\$1:6:alarm.VAL)#{ 6 =1|=0}"
+       "%(\$1:7:alarm.VAL)#{ 7 =1|=0}"
+       "%(\$1:8:alarm.VAL)#{ 8 =1|=0}"
+       "%(\$1:9:alarm.VAL)#{ 9 =1|=0}"
+       "%(\$1:10:alarm.VAL)#{10 =1|=0}"
+       "%(\$1:11:alarm.VAL)#{11 =1|=0}"
+       "%(\$1:12:alarm.VAL)#{12 =1|=0}"
+       "%(\$1:13:alarm.VAL)#{13 =1|=0}"
+       "%(\$1:14:alarm.VAL)#{14 =1|=0}"
+       "%#{15 =1|=0}";
 }
 
-get:uhr2:alarm {
-  out "IN";
-  in "IN %*f %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
-}
-get:uhr3:alarm {
-  out "IN";
-  in "IN %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr4:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+set:uhr:Min {
+  %extraInput = ignore;
+  out "SE \$2 %u";
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
+  in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\%_*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
+  @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
 }
 
-get:uhr5:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
+set:uhr:Max {
+  extraInput = ignore;
+  out "SE \$2 * %u";
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
+  in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\%_*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
+  @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
 }
 
-get:uhr6:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr7:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr8:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr9:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr10:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u %*u \r";
-}
-
-get:uhr11:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u %*u \r";
-}
-
-get:uhr12:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u %*u \r";
-}
-
-get:uhr13:alarm {
-  out "IN";
-  in "IN %f %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u %*u \r";
-}
-
-get:uhr14:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f %*u \r";
-}
-
-get:uhr15:alarm {
-  out "IN";
-  in "IN %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %f \r";
-}
-
-set:uhr:Minsoll {
-  out "SE \$1 %d";
-}
-
-set:uhr:Maxsoll {
-  out "SE \$1 * %d";
-}
+#set:uhr:Qn {
+#  out "SE \$2 * * %#{1.5|2.5|3|3.5|6|10}";
+#}
 
 set:uhr:Qn {
-  out "SE \$1 * * %.1f";
+  extraInput = ignore;
+  out "SE \$2 * * %#{1.5|2.5|3.5|6|10}";
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u"
 }
 
 set:uhr:Kubic {
-  out "SE \$1 *** %d";
+  extraInput = ignore;
+  out "SE \$2 *** %u";
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u"
 }
 
 set:uhr:Liter {
-  out "SE \$1 **** %d";
+  extraInput = ignore;
+  out "SE \$2 **** %u";
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u";
+
+  @init{
+   out "SE \$2";
+   in "SE\_\$2\_%*u\_"
+              "%(\$1:\$2:Min:set.VAL)u\_"
+              "%(\$1:\$2:Max:set.VAL)u\_"
+              "%*s\_"
+              "%(\$1:\$2:Kubic:set.VAL)u\_"
+              "%u "; # last is Liter
+  }
 }
 
