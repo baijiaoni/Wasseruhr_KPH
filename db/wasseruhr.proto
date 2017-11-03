@@ -11,6 +11,7 @@ set:uhr:CL {
   extraInput = ignore;
   out "CL \$2";
   in "CL";
+  in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
 }
 
 get:uhr:Status {
@@ -48,7 +49,7 @@ set:uhr:Min {
   %extraInput = ignore;
   out "SE \$2 %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
-  in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\%_*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
+  in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
   @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
 }
 
