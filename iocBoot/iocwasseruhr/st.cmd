@@ -15,12 +15,12 @@ wasseruhr_registerRecordDeviceDriver pdbbase
 
 save_restoreSet_Debug(100)
 
-#< ./iocBoot/$(IOC)/AutoSaveSetup.cmd
+< ./iocBoot/$(IOC)/AutoSaveSetup.cmd
 
 drvAsynIPPortConfigure("UHR_PORT","10.32.240.76:4006",0,0,0) 
 
-#asynSetTraceIOMask("UHR_PORT",-1,0x2)
-#asynSetTraceMask("UHR_PORT",-1,0x9)
+asynSetTraceIOMask("UHR_PORT",-1,0x2)
+asynSetTraceMask("UHR_PORT",-1,0x9)
 
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=baiHost")
@@ -39,15 +39,17 @@ dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=12, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=13, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=14, CARD=1")
 dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=15, CARD=1")
-#
+
+
 #dbLoadTemplate("db/wasseruhr.subs")
+
+dbLoadRecords("$(AUTOSAVE)/asApp/Db/save_restoreStatus.db", "P=UHR_PORT")
 
 #enable debug output
 #var streamDebug 1
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
-
 #< AutoSaveTask.cmd
 
 ## Start any sequence programs

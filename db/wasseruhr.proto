@@ -1,51 +1,62 @@
-replytimeout = 1000;
+replytimeout = 2000;
 readtimeout = 5000;
-writetimeout = 2000;
+writetimeout = 3000;
 # define the record waiting time in the queue to be processed
-locktimeout = 5000;
+locktimeout = 9000;
 #In & out terminator must be defined, otherwise the readTimeout & replyTimeout will be used
 outterminator = CR;
 interminator = CR;
 
-set:uhr:CL {
+clear_set {
   extraInput = ignore;
   out "CL \$2";
   in "CL";
   in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
 }
 
-get:uhr:Status {
+status_get {
   # Parameters: 1=CARD, 2=CHAN
   out "ST \$2";
-  in "ST\_\$2\_%(\$1:\$2:Flow:get.VAL)u\_"
-            "%(\$1:\$2:Min:get.VAL)d\_"
-            "%(\$1:\$2:Max:get.VAL)d\_"
-            "%(\$1:\$2:Qn:get.VAL)#{1.5N=2|2.5=1|1.5=0|10.N=3|10.0}\_"
-            "%(\$1:\$2:Kubic:get.VAL)u\_"
+  in "ST\_\$2\_%(\$1:\$2:flow_get.VAL)u\_"
+            "%(\$1:\$2:min_get.VAL)d\_"
+            "%(\$1:\$2:max_get.VAL)d\_"
+            "%(\$1:\$2:Qn_get.VAL)#{1.5N=2|2.5=1|1.5=0|10.N=3|10.0}\_"
+            "%(\$1:\$2:kubic_get.VAL)u\_"
             "%u\_"; # last is Liter
 }
 
+#status_get {
+#  # Parameters: 1=CARD, 2=CHAN
+#  out "ST \$2";
+#  in "ST\_\$2\_%(\$1:\$2:flow_get.VAL)u\_"
+#            "%(\$1:\$2:min_get.VAL)d\_"
+#            "%(\$1:\$2:max_get.VAL)d\_"
+#            "%(\$1:\$2:Qn_get.VAL)fN\_"
+#            "%(\$1:\$2:kubic_get.VAL)u\_"
+#            "%u\_"; # last is Liter
+#}
+
 # alarm 
-get:uhr:alarm {
+alarm_get {
   out "IN";
-  in "IN %(\$1:1:alarm.VAL)#{ 1 =1|=0}"
-       "%(\$1:2:alarm.VAL)#{ 2 =1|=0}"
-       "%(\$1:3:alarm.VAL)#{ 3 =1|=0}"
-       "%(\$1:4:alarm.VAL)#{ 4 =1|=0}"
-       "%(\$1:5:alarm.VAL)#{ 5 =1|=0}"
-       "%(\$1:6:alarm.VAL)#{ 6 =1|=0}"
-       "%(\$1:7:alarm.VAL)#{ 7 =1|=0}"
-       "%(\$1:8:alarm.VAL)#{ 8 =1|=0}"
-       "%(\$1:9:alarm.VAL)#{ 9 =1|=0}"
-       "%(\$1:10:alarm.VAL)#{10 =1|=0}"
-       "%(\$1:11:alarm.VAL)#{11 =1|=0}"
-       "%(\$1:12:alarm.VAL)#{12 =1|=0}"
-       "%(\$1:13:alarm.VAL)#{13 =1|=0}"
-       "%(\$1:14:alarm.VAL)#{14 =1|=0}"
+  in "IN %(\$1:1_alarm.VAL)#{ 1 =1|=0}"
+       "%(\$1:2_alarm.VAL)#{ 2 =1|=0}"
+       "%(\$1:3_alarm.VAL)#{ 3 =1|=0}"
+       "%(\$1:4_alarm.VAL)#{ 4 =1|=0}"
+       "%(\$1:5_alarm.VAL)#{ 5 =1|=0}"
+       "%(\$1:6_alarm.VAL)#{ 6 =1|=0}"
+       "%(\$1:7_alarm.VAL)#{ 7 =1|=0}"
+       "%(\$1:8_alarm.VAL)#{ 8 =1|=0}"
+       "%(\$1:9_alarm.VAL)#{ 9 =1|=0}"
+       "%(\$1:10_alarm.VAL)#{10 =1|=0}"
+       "%(\$1:11_alarm.VAL)#{11 =1|=0}"
+       "%(\$1:12_alarm.VAL)#{12 =1|=0}"
+       "%(\$1:13_alarm.VAL)#{13 =1|=0}"
+       "%(\$1:14_alarm.VAL)#{14 =1|=0}"
        "%#{15 =1|=0}";
 }
 
-set:uhr:Min {
+min_set {
   %extraInput = ignore;
   out "SE \$2 %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
@@ -53,7 +64,7 @@ set:uhr:Min {
   @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
 }
 
-set:uhr:Max {
+max_set {
   extraInput = ignore;
   out "SE \$2 * %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
@@ -61,23 +72,25 @@ set:uhr:Max {
   @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
 }
 
-#set:uhr:Qn {
-#  out "SE \$2 * * %#{1.5|2.5|3|3.5|6|10}";
-#}
-
-set:uhr:Qn {
+Qn_set {
   extraInput = ignore;
   out "SE \$2 * * %#{1.5|2.5|3.5|6|10}";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u"
 }
 
-set:uhr:Kubic {
+#Qn_set {
+#  extraInput = ignore;
+#  out "SE \$2 * * %.2f";
+#  in "SE\_\$2\_%*u\_%*u\_%*u\_%*f\_%*u\_%*u"
+#}
+
+kubic_set {
   extraInput = ignore;
   out "SE \$2 *** %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u"
 }
 
-set:uhr:Liter {
+liter_set {
   extraInput = ignore;
   out "SE \$2 **** %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u";
@@ -85,10 +98,10 @@ set:uhr:Liter {
   @init{
    out "SE \$2";
    in "SE\_\$2\_%*u\_"
-              "%(\$1:\$2:Min:set.VAL)u\_"
-              "%(\$1:\$2:Max:set.VAL)u\_"
-              "%*s\_"
-              "%(\$1:\$2:Kubic:set.VAL)u\_"
+              "%(\$1:\$2:min_set.VAL)u\_"
+              "%(\$1:\$2:max_set.VAL)u\_"
+              "%(\$1:\$2:Qn_set.VAL)#{1.5N=2|2.5=1|1.5=0|10.N=3|10.0}\_"
+              "%(\$1:\$2:kubic_set.VAL)u\_"
               "%u "; # last is Liter
   }
 }
