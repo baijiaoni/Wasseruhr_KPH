@@ -1,4 +1,4 @@
-replytimeout = 2000;
+replytimeout = 1000;
 readtimeout = 5000;
 writetimeout = 3000;
 # define the record waiting time in the queue to be processed
@@ -25,17 +25,6 @@ status_get {
             "%u\_"; # last is Liter
 }
 
-#status_get {
-#  # Parameters: 1=CARD, 2=CHAN
-#  out "ST \$2";
-#  in "ST\_\$2\_%(\$1:\$2:flow_get.VAL)u\_"
-#            "%(\$1:\$2:min_get.VAL)d\_"
-#            "%(\$1:\$2:max_get.VAL)d\_"
-#            "%(\$1:\$2:Qn_get.VAL)fN\_"
-#            "%(\$1:\$2:kubic_get.VAL)u\_"
-#            "%u\_"; # last is Liter
-#}
-
 # alarm 
 alarm_get {
   out "IN";
@@ -61,7 +50,12 @@ min_set {
   out "SE \$2 %u";
   in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
   in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
-  @mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
+  #@mismatch{in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u "};
+  @init  {
+	out "SE \$2 %u";
+	in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u ";
+   	in "AL\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u\_%*u";
+  }
 }
 
 max_set {
@@ -75,14 +69,11 @@ max_set {
 Qn_set {
   extraInput = ignore;
   out "SE \$2 * * %#{1.5|2.5|3.5|6|10}";
-  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u"
+  in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u";
+  @init{
+  	out "SE \$2 * * %#{1.5|2.5|3.5|6|10}";
+  	in "SE\_\$2\_%*u\_%*u\_%*u\_%*s\_%*u\_%*u";}
 }
-
-#Qn_set {
-#  extraInput = ignore;
-#  out "SE \$2 * * %.2f";
-#  in "SE\_\$2\_%*u\_%*u\_%*u\_%*f\_%*u\_%*u"
-#}
 
 kubic_set {
   extraInput = ignore;
@@ -98,10 +89,10 @@ liter_set {
   @init{
    out "SE \$2";
    in "SE\_\$2\_%*u\_"
-              "%(\$1:\$2:min_set.VAL)u\_"
+              "%*u\_"
               "%(\$1:\$2:max_set.VAL)u\_"
-              "%(\$1:\$2:Qn_set.VAL)#{1.5N=2|2.5=1|1.5=0|10.N=3|10.0}\_"
-              "%(\$1:\$2:kubic_set.VAL)u\_"
+              "%*s\_"
+              "%u\_"
               "%u "; # last is Liter
   }
 }

@@ -16,7 +16,7 @@ record(longout, "$(CARD):$(CHAN):min_set")
     field(HOPR, "30000")
     field(EGU,  "l/h")
     field(PRIO, "HIGH")
-    info(autosaveFields_pass1, "VAL")
+    info(autosaveFields_pass0, "VAL")
     field(TPRO, "1")
 }
 
@@ -29,17 +29,9 @@ record(longout, "$(CARD):$(CHAN):max_set")
     field(HOPR, "30000")
     field(EGU,  "l/h")
     field(PRIO, "HIGH")
+    #info(autosaveFields_pass0, "VAL")
 }
 
-#record(ao, "$(CARD):$(CHAN):Qn_set")
-#{
-#    field(DESC, "Set Qn ")
-#    field(DTYP, "stream")
-#    field(OUT,  "@wasseruhr.proto Qn_set($(CARD),$(CHAN)) $(PORT)")
-#    field(PREC, "2")
-#    info(autosaveFields_pass1, "VAL")
-#    field(TPRO, "1")
-#}
 record(mbbo, "$(CARD):$(CHAN):Qn_set")
 {
     field(DESC, "Set Qn value")
@@ -51,8 +43,8 @@ record(mbbo, "$(CARD):$(CHAN):Qn_set")
     field(THST, "6")
     field(FRST, "10")
     field(PRIO, "HIGH")
-    info(autosaveFields_pass1, "VAL")
-    field(TPRO, "1")
+    info(autosaveFields_pass0, "VAL")
+    #field(TPRO, "1")
 }
 
 record(longout, "$(CARD):$(CHAN):kubic_set")
@@ -118,11 +110,6 @@ record(longin, "$(CARD):$(CHAN):kubic_get")
     #field(TPRO, "1")
 }
 
-#record(ai, "$(CARD):$(CHAN):Qn_get")
-#{
-#    field(DESC, "Get Qn ")
-#}
-
 record(mbbi, "$(CARD):$(CHAN):Qn_get")
 {
     field(DESC, "Get Qn value")
@@ -131,7 +118,7 @@ record(mbbi, "$(CARD):$(CHAN):Qn_get")
     field(TWST, "1.5N")
     field(THST, "10.N")
     field(FRST, "10.0")
-    field(TPRO, "1")
+    #field(TPRO, "1")
 }
 
 record(longin, "$(CARD):$(CHAN):liter_get")
@@ -317,5 +304,5 @@ record (stringin, "$(CARD):$(CHAN):device_set")
 {
     field(DESC, "Input the monitored device")
     field(DTYP, "Soft Channel")
-    info(autosaveFields_pass1, "VAL")
+    info(autosaveFields_pass0, "VAL")
 }
