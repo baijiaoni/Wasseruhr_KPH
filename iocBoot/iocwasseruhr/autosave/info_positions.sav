@@ -1,49 +1,49 @@
 # autosave R5.3	Automatically generated - DO NOT MODIFY - 171110-094735
-1:10:min_set.VAL 200
-1:11:min_set.VAL 200
-1:12:min_set.VAL 200
-1:13:min_set.VAL 200
-1:14:min_set.VAL 200
-1:15:min_set.VAL 200
-1:1:min_set.VAL 500
-1:2:min_set.VAL 180
-1:3:min_set.VAL 180
-1:4:min_set.VAL 200
-1:5:min_set.VAL 230
-1:6:min_set.VAL 300
-1:7:min_set.VAL 300
-1:8:min_set.VAL 300
-1:9:min_set.VAL 300
-1:10:device_set.VAL 
-1:11:device_set.VAL 
-1:12:device_set.VAL 
-1:13:device_set.VAL 
-1:14:device_set.VAL 
-1:15:device_set.VAL 
-1:1:device_set.VAL Wedlerkiste
-1:2:device_set.VAL Laser
-1:3:device_set.VAL Beam dump
-1:4:device_set.VAL 
-1:5:device_set.VAL 
-1:6:device_set.VAL 
-1:7:device_set.VAL 
-1:8:device_set.VAL 
-1:9:device_set.VAL 
-1:10:Qn_set.VAL 2
-1:11:Qn_set.VAL 2
-1:12:Qn_set.VAL 2
-1:13:Qn_set.VAL 2
-1:14:Qn_set.VAL 2
-1:15:Qn_set.VAL 2
-1:1:Qn_set.VAL 2
-1:2:Qn_set.VAL 2
-1:3:Qn_set.VAL 2
-1:4:Qn_set.VAL 2
-1:5:Qn_set.VAL 2
-1:6:Qn_set.VAL 2
-1:7:Qn_set.VAL 2
-1:8:Qn_set.VAL 2
-1:9:Qn_set.VAL 2
+pos1:res1:min_set.VAL 500
+pos2:res2:min_set.VAL 180
+pos3:res3:min_set.VAL 180
+pos4:res4:min_set.VAL 200
+pos5:res5:min_set.VAL 200
+pos6:res6:min_set.VAL 200
+pos7:res7:min_set.VAL 200
+pos8:res8:min_set.VAL 200
+pos9:res9:min_set.VAL 200
+pos10:res10:min_set.VAL 200
+pos11:res11:min_set.VAL 200
+pos12:res12:min_set.VAL 200
+pos13:res13:min_set.VAL 200
+pos14:res14:min_set.VAL 200
+pos15:res15:min_set.VAL 200
+pos10:res10:device_set.VAL 
+pos11:res11:device_set.VAL 
+pos12:res12:device_set.VAL 
+pos13:res13:device_set.VAL 
+pos14:res14:device_set.VAL 
+pos15:res15:device_set.VAL 
+pos1:res1:device_set.VAL Wedlerkiste
+pos2:res2:device_set.VAL Laser
+pos3:res3:device_set.VAL Beam dump
+pos4:res4:device_set.VAL 
+pos5:res5:device_set.VAL 
+pos6:res6:device_set.VAL 
+pos7:res7:device_set.VAL 
+pos8:res8:device_set.VAL 
+pos9:res9:device_set.VAL 
+pos10:res10:Qn_set.VAL 2
+pos11:res11:Qn_set.VAL 2
+pos12:res12:Qn_set.VAL 2
+pos13:res13:Qn_set.VAL 2
+pos14:res14:Qn_set.VAL 2
+pos15:res15:Qn_set.VAL 2
+pos1:res1:Qn_set.VAL 2
+pos2:res2:Qn_set.VAL 2
+pos3:res3:Qn_set.VAL 2
+pos4:res4:Qn_set.VAL 2
+pos5:res5:Qn_set.VAL 2
+pos6:res6:Qn_set.VAL 2
+pos7:res7:Qn_set.VAL 2
+pos8:res8:Qn_set.VAL 2
+pos9:res9:Qn_set.VAL 2
 
 
 <END>

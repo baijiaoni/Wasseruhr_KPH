@@ -1,0 +1,56 @@
+# EPICS Device Support for Water Meter
+
+One water meter device consists of 15 water meters, which can be used to monitor the flow of up to 15 cooling water tunnels. Each water meter monitors the flow within a certain range [min flow, max flow]. When the flow is out of this range, the alarm will be generated.
+
+## Getting Started
+
+This Readme file will give you a guide to use the water meter database records and GUI to monitor the water flow for a specified device/a ceratin water flow path.
+
+### Prerequisites
+
+Before start, you have to know the devices monitored by water meters and the corresponding requirements/configuration for the water meter (e.g. minimum flow, maximum flow, Qn).
+
+### Installing
+
+1. Get the water meter device support from the repository
+   $(TOP)/db	
+	-wasseruhr.db
+	-wasseruhr.proto 
+	-wasseruhr.subs 
+
+   $(TOP)/iocBoot/iocwasseruhr/	
+	-AutoSaveSetup.cmd
+	-autosave/info_positions.sav
+	-st.cmd
+
+2. Modify the corresponding record names according to the position and responsiblity
+   Modify the set of definitions {P, R, CHAN, PORT} corresponding to the water meter in $(TOP)/db/wasseruhr.subs
+
+   E.g. the 1st water meter is used for the Wedlerkiste with macros P = aaaa: and R = bbbb:
+	modify {pos1:,res1:,1,UHR_PORT} to {aaa:,bbb:,1,UHR_PORT} 
+
+3. Modify the restore values of the Min flow, Qn and the connected device for the IOC reboot
+   Give the minimum flow value, Qn (see Tab.1) or the connected device name in $(TOP)/iocBoot/iocwasseruhr/autosave/info_positions.sav
+
+   E.g. the 1st water meter is used for the Wedlerkiste with mim flow 500l/h, Qn 1.5N 
+        pos1:res1:min_set.VAL 500
+	pos1:res1:device_set.VAL Wedlerkiste
+	pos1:res1:Qn_set.VAL 2
+    
+		    Tab.1 Qn configuratin
+   -------------------------------------------------
+   | Qn set       |  0  |  1  |   2  |  3   |   4  |
+   -------------------------------------------------   
+   | Qn value     | 1.5 | 2.5 | 1.5N | 10.0 | 10.N |
+   -------------------------------------------------
+     
+4. Run ./st.cmd to start the IOC
+
+5. Run watermeter.opi on CSS
+   - You can set min flow, max flow, cubic meter and liter on the configuration panel.
+   - You can read the current flow, cubic meter, liter and the status of water meters on the reedback panel.
+   - When the status of a water meter is OK, please click the restart botton, the timestamp will show the restart time.
+     When the status of a water meter changes from OK to alarm, the timestamp shows the start time of the alarm status.
+     When a water meter with the alarm status is restarted, the timestamp shows the restart time.  
+
+

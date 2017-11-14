@@ -7,7 +7,6 @@
 epicsEnvSet("STREAM_PROTOCOL_PATH", ".:../../db")
 
 cd "${TOP}"
-#dbLoadRecords("db/asynRecord.db","")
 
 ## Register all support components
 dbLoadDatabase "dbd/wasseruhr.dbd"
@@ -24,24 +23,8 @@ drvAsynIPPortConfigure("UHR_PORT","10.32.240.76:4006",0,0,0)
 
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=baiHost")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=1, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=2, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=3, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=4, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=5, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=6, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=7, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=8, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=9, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=10, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=11, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=12, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=13, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=14, CARD=1")
-dbLoadRecords("db/wasseruhr.db","PORT=UHR_PORT, CHAN=15, CARD=1")
 
-
-#dbLoadTemplate("db/wasseruhr.subs")
+dbLoadTemplate("db/wasseruhr.subs")
 
 dbLoadRecords("$(AUTOSAVE)/asApp/Db/save_restoreStatus.db", "P=UHR_PORT")
 
