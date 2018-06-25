@@ -1,6 +1,6 @@
-replytimeout = 3000;
-readtimeout = 8000;
-writetimeout = 3000;
+replytimeout = 4000;
+readtimeout = 9000;
+writetimeout = 4000;
 # define the record waiting time in the queue to be processed
 locktimeout = 9000;
 #In & out terminator must be defined, otherwise the readTimeout & replyTimeout will be used
@@ -40,17 +40,17 @@ alarm_get {
   in "IN %(mexh3:wm_wedlposu01:alarm.VAL)#{ 1 =1|=0}"
        "%(steam:wm_laser:alarm.VAL)#{ 2 =1|=0}"
        "%(melba_060:wm_beamdump:alarm.VAL)#{ 3 =1|=0}"
-       "%(alarm4.VAL)#{ 4 =1|=0}"
-       "%(alarm5.VAL)#{ 5 =1|=0}"
-       "%(alarm6.VAL)#{ 6 =1|=0}"
-       "%(alarm7.VAL)#{ 7 =1|=0}"
-       "%(alarm8.VAL)#{ 8 =1|=0}"
-       "%(alarm9.VAL)#{ 9 =1|=0}"
-       "%(alarm10.VAL)#{10 =1|=0}"
-       "%(alarm11.VAL)#{11 =1|=0}"
-       "%(alarm12.VAL)#{12 =1|=0}"
-       "%(alarm13.VAL)#{13 =1|=0}"
-       "%(alarm14.VAL)#{14 =1|=0}"
+       "%(pos4:res4:alarm.VAL)#{ 4 =1|=0}"
+       "%(pos5:res5:alarm.VAL)#{ 5 =1|=0}"
+       "%(pos6:res6:alarm.VAL)#{ 6 =1|=0}"
+       "%(pos7:res7:alarm.VAL)#{ 7 =1|=0}"
+       "%(pos8:res8:alarm.VAL)#{ 8 =1|=0}"
+       "%(pos9:res9:alarm.VAL)#{ 9 =1|=0}"
+       "%(pos10:res10:alarm.VAL)#{10 =1|=0}"
+       "%(pos11:res11:alarm.VAL)#{11 =1|=0}"
+       "%(pos12:res12:alarm.VAL)#{12 =1|=0}"
+       "%(pos13:res13:alarm.VAL)#{13 =1|=0}"
+       "%(pos14:res14:alarm.VAL)#{14 =1|=0}"
        "%#{15 =1|=0}";
 }
 

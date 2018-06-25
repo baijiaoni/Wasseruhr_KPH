@@ -6,7 +6,7 @@
 # 	param4 - Qn 1, 2, 3, 6 und 10 ~ 1.5, 2.5, 1.5N, 10N und 10
 # 	param5 - Kubikmeter
 # 	param6 - Liter, 1000 liter => 1 Kubikmeter
-` 
+
 record(longout, "$(P)$(R)min_set")
 {
     field(DESC, "Set minimal water flow rate (Liter/hour)")
@@ -158,7 +158,7 @@ record(bi, "mexh3:wm_wedlposu01:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
-    #field(TPRO, "1")
+    field(TPRO, "1")
     field(FLNK, "trigger1-TS")
 }
 record(bi, "steam:wm_laser:alarm")
@@ -167,6 +167,7 @@ record(bi, "steam:wm_laser:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(TPRO, "1")
     field(FLNK, "trigger2-TS")
 }
 record(bi, "melba_060:wm_beamdump:alarm")
@@ -175,17 +176,19 @@ record(bi, "melba_060:wm_beamdump:alarm")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(TPRO, "1")
     field(FLNK, "trigger3-TS")
 }
-record(bi, "alarm4")
+record(bi, "pos4:res4:alarm")
 {
     field(DESC, "Show status of water meter 4")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
+    field(TPRO, "1")
     field(FLNK, "trigger4-TS")
 }
-record(bi, "alarm5")
+record(bi, "pos5:res5:alarm")
 {
     field(DESC, "Show status of water meter 5")
     field(ZNAM, "OK")
@@ -193,7 +196,7 @@ record(bi, "alarm5")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger5-TS")
 }
-record(bi, "alarm6")
+record(bi, "pos6:res6:alarm")
 {
     field(DESC, "Show status of water meter 6")
     field(ZNAM, "OK")
@@ -201,7 +204,7 @@ record(bi, "alarm6")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger6-TS")
 }
-record(bi, "alarm7")
+record(bi, "pos7:res7:alarm")
 {
     field(DESC, "Show status of water meter 7")
     field(ZNAM, "OK")
@@ -209,7 +212,7 @@ record(bi, "alarm7")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger7-TS")
 }
-record(bi, "alarm8")
+record(bi, "pos8:res8:alarm")
 {
     field(DESC, "Show status of water meter 8")
     field(ZNAM, "OK")
@@ -217,7 +220,7 @@ record(bi, "alarm8")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger8-TS")
 }
-record(bi, "alarm9")
+record(bi, "pos9:res9:alarm")
 {
     field(DESC, "Show status of water meter 9")
     field(ZNAM, "OK")
@@ -225,7 +228,7 @@ record(bi, "alarm9")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger9-TS")
 }
-record(bi, "alarm10")
+record(bi, "pos10:res10:alarm")
 {
     field(DESC, "Show status of water meter 10")
     field(ZNAM, "OK")
@@ -233,7 +236,7 @@ record(bi, "alarm10")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger10-TS")
 }
-record(bi, "alarm11")
+record(bi, "pos11:res11:alarm")
 {
     field(DESC, "Show status of water meter 11")
     field(ZNAM, "OK")
@@ -241,7 +244,7 @@ record(bi, "alarm11")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger11-TS")
 }
-record(bi, "alarm12")
+record(bi, "pos12:res12:alarm")
 {
     field(DESC, "Show status of water meter 12")
     field(ZNAM, "OK")
@@ -249,7 +252,7 @@ record(bi, "alarm12")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger12-TS")
 }
-record(bi, "alarm13")
+record(bi, "pos13:res13:alarm")
 {
     field(DESC, "Show status of water meter 13")
     field(ZNAM, "OK")
@@ -257,7 +260,7 @@ record(bi, "alarm13")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger13-TS")
 }
-record(bi, "alarm14")
+record(bi, "pos14:res14:alarm")
 {
     field(DESC, "Show status of water meter 14")
     field(ZNAM, "OK")
@@ -265,7 +268,7 @@ record(bi, "alarm14")
     field(OSV,  "MAJOR")
     field(FLNK, "trigger14-TS")
 }
-record(bi, "alarm15")
+record(bi, "pos15:res15:alarm")
 {
     field(DESC, "Show status of water meter 15")
     field(DTYP, "stream")
@@ -273,27 +276,30 @@ record(bi, "alarm15")
     field(ZNAM, "OK")
     field(ONAM, "Alarm")
     field(OSV,  "MAJOR")
-    field(SCAN, "1 second")
+    field(SCAN, "10 second")
     field(FLNK, "trigger15-TS")
 }
 
-#timestamp alarm of water meter
+#timestamp alarm of water meter 
+
 record(calcout, "trigger$(CHAN)-TS")
 {
-    field(INPA, "alarm$(CHAN)")
+    field(INPA, "$(P)$(R)alarm")
     field(OOPT, "Transition To Non-zero")
     field(CALC, "A=1")
     field(OUT,  "$(P)$(R)timestamp.PROC")
-    #field(TPRO, "1")
+    field(TPRO, "1")
 }
 
-record (stringin, "$(P)$(R)timestamp")
+
+
+ record (stringin, "$(P)$(R)timestamp")
 {
-    field(DESC, "Timestamp the alarm water meter")
-    field(DTYP, "Soft Timestamp")
-    field(INP,  "@%b %d, %Y %H:%M:%S")
-    #field(INP,  "@%b %d, %Y %H:%M:%S.%0f")
-    #field(TPRO, "1")
+      field(DESC, "Timestamp the alarm water meter")
+      field(DTYP, "Soft Timestamp")
+      field(INP,  "@%b %d, %Y %H:%M:%S")
+      #field(INP,  "@%b %d, %Y %H:%M:%S.%0f")
+      field(TPRO, "1")
 }
 
 record (stringin, "$(P)$(R)device_set")
@@ -305,8 +311,8 @@ record (stringin, "$(P)$(R)device_set")
 
 record(calcout, "$(P)$(R)trigger_ok")
 {
-    field(INPA, "alarm$(CHAN)")
+    field(INPA, "$(P)$(R)alarm")
     field(CALC, "A=0")
     field(OUT,  "$(P)$(R)timestamp.PROC")
-    #field(TPRO, "1")
+    field(TPRO, "1")
 }
